@@ -13,9 +13,16 @@ func Check7zAvailability() error {
 	return err
 }
 
-func Extract7zArchive(archiveFullPath string, destFullPath string) error {
-	destPathParm := strings.Replace(destFolderTemplate, templatePattern, destFullPath, -1)
-	cmd := exec.Command(sevenCmd, extractCmd, destPathParm, archiveFullPath)
+func Extract(archiveFullPath string, destFullPath string) error {
+	destPathParam := strings.Replace(destFolderTemplate, templatePattern, destFullPath, -1)
+	cmd := exec.Command(sevenCmd, extractCmd, destPathParam, archiveFullPath)
+	out, err := cmd.CombinedOutput()
+	log.Println(string(out))
+	return err
+}
+
+func Compress(archiveFullPath string, srcFullPath string) error {
+	cmd := exec.Command(sevenCmd, archiveCmd, archiveFullPath, srcFullPath)
 	out, err := cmd.CombinedOutput()
 	log.Println(string(out))
 	return err
