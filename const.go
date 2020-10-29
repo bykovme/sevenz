@@ -2,6 +2,7 @@ package sevenz
 
 const sevenCmd = "7z"
 const extractCmd = "x"
+const extractWoFolders = "e"
 const archiveCmd = "a"
 const destFolderTemplate = "-o{folder}"
 const templatePattern = "{folder}"
